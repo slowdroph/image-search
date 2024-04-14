@@ -28,6 +28,10 @@
     border-style: solid;
     border-radius: 10px;
     top: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .img {

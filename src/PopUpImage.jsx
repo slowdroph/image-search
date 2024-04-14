@@ -1,23 +1,50 @@
 import { useEffect, useState } from "react";
 import styles from "./PopUpImage.module.css";
+import Loader from "./Loader";
+import { KEY } from './App'
 
-function PopUpImage({ KEY, selectedId, HandleCloseOverlay }) {
-    const [Image, SetImage] = useState([]);
+function PopUpImage({
+    selectedId,
+    HandleCloseOverlay,
+    setIsLoading,
+    isLoading,
+}) {
+    const [image, setImage] = useState({});
+    const { tags: title, largeImageURL, pageURL } = image;
 
-    useEffect(
-        function () {
-            async function getImageDetails() {
+    useEffect(() => {
+        async function getImageDetails() {
+            try {
+                setIsLoading(true);
                 const res = await fetch(
                     `https://pixabay.com/api/?key=${KEY}&id=${selectedId}`
                 );
                 const data = await res.json();
-                SetImage(data.hits[0]);
+                setImage(data.hits[0]);
+            } catch (error) {
+                console.error(error);
+            } finally {
+                setIsLoading(false);
             }
-            getImageDetails();
-        },
+        }
 
-        [selectedId]
-    );
+        if (selectedId) {
+            getImageDetails();
+        }
+    }, [ selectedId, setIsLoading]);
+
+    useEffect(() => {
+        if (title) {
+            document.title = `Image: ${title}`;
+        } else {
+            document.title = "Image Search";
+        }
+
+        return () => {
+            document.title = "Image Search";
+        };
+    }, [title]);
+
     return (
         <>
             <span
@@ -26,19 +53,24 @@ function PopUpImage({ KEY, selectedId, HandleCloseOverlay }) {
             ></span>
             <div className={styles.content}>
                 <div className={styles.data}>
-                    <img
-                        className={styles.img}
-                        src={Image.largeImageURL}
-                        key={selectedId}
-                    />
+                    {isLoading ? (
+                        <Loader />
+                    ) : (
+                        <img
+                            className={styles.img}
+                            src={largeImageURL}
+                            alt={title}
+                        />
+                    )}
+
                     <div className={styles.external}>
                         <a
                             className={styles.link}
-                            href={Image.pageURL}
+                            href={pageURL}
                             target="_blank"
-                            rel="external"
+                            rel="noopener noreferrer"
                         >
-                            Link Original
+                            Original Source
                         </a>
                     </div>
                 </div>
