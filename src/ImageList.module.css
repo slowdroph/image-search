@@ -8,3 +8,23 @@
     transition: 500ms ease-in;
     cursor: pointer;
 }
+
+@media screen and (max-width: 750px) {
+    .img {
+        width: 80%;
+    }
+    .list {
+        display: contents;
+    }
+}
+
+@media screen and (max-width: 460px) {
+    .list {
+        max-width: 80%;
+        height: 75vh;
+    }
+    .img {
+        width: 100%;
+        max-height: 80%;
+    }
+}

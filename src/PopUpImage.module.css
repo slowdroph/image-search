@@ -40,6 +40,22 @@
     max-height: 80%;
 }
 
+@media screen and (max-width: 800px) {
+    .data {
+        justify-content: normal;
+        max-height: 80vh;
+    }
+    .img {
+        height: 100%;
+    }
+    .external {
+        padding:  25px 0px 25px 0px;
+    }
+    .link:hover {
+        margin-top: 2px;
+    }
+}
+
 .link {
     color: white;
     font-size: 20px;
@@ -72,4 +88,12 @@
     align-items: center;
     justify-content: center;
     padding: 40px 0px 40px 0px;
+}
+
+@media screen and (max-width:500px) {
+    .link {
+        padding: 15px;
+        width: 230px;
+        font-size: 16px;
+    }
 }

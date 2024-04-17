@@ -28,6 +28,31 @@
     background-color: rgb(238, 231, 231);
 }
 
+@media screen and (max-width: 670px) {
+    .search {
+        width: 30rem;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .search {
+        width: 20rem;
+        font-size: 16px;
+        padding: 12.5px 10px;
+        text-align: center;
+    }
+    .header {
+        height: 230px;
+        gap: 40px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .search {
+        width: 15rem;
+    }
+}
+
 .search::-webkit-search-cancel-button {
     /* cursor: pointer;
     font-size: 30px;
