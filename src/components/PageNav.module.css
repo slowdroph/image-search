@@ -1,0 +1,30 @@
+.nav_list {
+    background-color: #20c997;
+    padding: 20px 0px;
+}
+
+.nav_list ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    list-style-type: none;
+    gap: 5rem;
+}
+
+.nav_list li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 1.3px;
+}
+
+.nav_list li a:hover {
+    color: #eee7e7;
+}
+
+.nav_list li a:active {
+    color: cyan;
+}
+

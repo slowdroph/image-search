@@ -49,7 +49,7 @@
         height: 100%;
     }
     .external {
-        padding:  25px 0px 25px 0px;
+        padding: 25px 0px 25px 0px;
     }
     .link:hover {
         margin-top: 2px;
@@ -79,7 +79,6 @@
     color: #20c997;
     background-color: white;
     border-color: #20c997;
-    margin-top: 5px;
 }
 
 .external {
@@ -90,10 +89,16 @@
     padding: 40px 0px 40px 0px;
 }
 
-@media screen and (max-width:500px) {
+@media screen and (max-width: 500px) {
     .link {
         padding: 15px;
         width: 230px;
         font-size: 16px;
     }
+}
+
+.star {
+    position: absolute;
+    right: 30px;
+    bottom: 5rem;
 }

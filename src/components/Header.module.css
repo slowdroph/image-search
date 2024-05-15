@@ -5,7 +5,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    font-family: Poppins;
+    font-family: Poppins ,Arial, Helvetica, sans-serif;
     color: #20c997;
     height: 400px;
     gap: 30px;
@@ -54,9 +54,6 @@
 }
 
 .search::-webkit-search-cancel-button {
-    /* cursor: pointer;
-    font-size: 30px;
-    color: #20c997; */
     display: none;
 }
 
@@ -65,7 +62,7 @@
     text-transform: capitalize;
 }
 
-.search:focus {
+.search:focus{
     outline: none;
     border-color: #249674;
     margin-top: 5px;
