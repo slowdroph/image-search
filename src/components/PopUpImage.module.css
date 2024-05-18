@@ -102,3 +102,7 @@
     right: 30px;
     bottom: 5rem;
 }
+
+.star svg:hover {
+    fill: yellow;
+}

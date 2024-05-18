@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import PageNav from "../components/PageNav";
 import { KEY } from "./Search";
 import styles from "./PageFavorites.module.css";
+import { Link } from "react-router-dom";
 
 function PageFavorites({ favorites, setFavorite }) {
     const [mainFavs, setMainFavs] = useState([]);
@@ -33,7 +34,6 @@ function PageFavorites({ favorites, setFavorite }) {
                         hits.push(...data.hits);
                     }
                     setMainFavs(hits);
-                    localStorage.setItem("favorites", JSON.stringify(hits));
                 } else {
                     setMainFavs([]);
                 }
@@ -48,9 +48,26 @@ function PageFavorites({ favorites, setFavorite }) {
     return (
         <>
             <PageNav />
-            <h1 className={styles.header}>Your favorites</h1>
-            <Myfavorites mainFavs={mainFavs} removeFavorite={removeFavorite} />
+            <HeaderCount mainFavs={mainFavs} />
+            {mainFavs.length === 0 ? (
+                <EmptyMessage />
+            ) : (
+                <Myfavorites
+                    mainFavs={mainFavs}
+                    removeFavorite={removeFavorite}
+                />
+            )}
         </>
+    );
+}
+
+function HeaderCount({ mainFavs }) {
+    return (
+        <header className={styles.header}>
+            <span className={styles.star}>{mainFavs.length}</span>
+            <h1 className={styles.heading}>Your favorites</h1>
+            <span className={styles.star}>{mainFavs.length}</span>
+        </header>
     );
 }
 
@@ -58,29 +75,36 @@ function Myfavorites({ mainFavs, removeFavorite }) {
     return (
         <ul className={styles.lista}>
             {mainFavs.map((fav) => (
-                <FavList
-                    key={fav.id}
-                    mainFav={fav}
-                    removeFavorite={removeFavorite}
-                />
+                <li key={fav.id} className={styles.list_item}>
+                    <img src={fav.largeImageURL} alt={fav.tags} />
+                    <a
+                        className={styles.link}
+                        href={fav.pageURL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Source
+                    </a>
+                    <button
+                        onClick={() => removeFavorite(fav.id)}
+                        className={styles.btn}
+                    >
+                        ⛔
+                    </button>
+                </li>
             ))}
         </ul>
     );
 }
 
-function FavList({ mainFav, removeFavorite }) {
-    function handleRemoveFavorite() {
-        removeFavorite(mainFav.id);
-    }
-
+function EmptyMessage() {
     return (
-        <li className={styles.list_item}>
-            <img src={mainFav.largeImageURL} alt={mainFav.tags} />
-            <a className={styles.link} href={mainFav.pageURL} target="_blank" rel="noopener noreferrer">
-                Source
-            </a>
-            <button className={styles.btn} onClick={handleRemoveFavorite}>⛔</button>
-        </li>
+        <p className={styles.emptymsg}>
+            It seems like you have no favorites yet, try to add some by clicking{" "}
+            <Link className={styles.route} to="/search">
+                here
+            </Link>
+        </p>
     );
 }
 

@@ -1,9 +1,45 @@
 .header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 8em;
+    gap: 20px;
+}
+
+.heading {
     font-family: Poppins, Arial, Helvetica, sans-serif;
     color: #20c997;
-    text-align: center;
     font-size: 2.2em;
-    padding: 110px 0px 40px 0px;
+}
+
+.star {
+    position: relative;
+}
+
+.star:nth-child(1) {
+    right: 20px;
+}
+.star:nth-child(3) {
+    left: 20px;
+}
+
+.star:nth-child(3)::before {
+    content: "⭐";
+    font-size: 36px;
+    position: absolute;
+    left: -20.5px;
+    bottom: -10px;
+    z-index: -1;
+}
+
+.star:nth-child(1):after {
+    content: "⭐";
+    font-size: 36px;
+    position: absolute;
+    right: -20.5px;
+    bottom: -10px;
+    z-index: -1;
 }
 
 .lista {
@@ -12,6 +48,7 @@
     justify-content: space-around;
     flex-wrap: wrap;
     gap: 40px;
+    margin-top: 5em;
 }
 
 .list_item {
@@ -65,4 +102,15 @@
     border: none;
     background-color: transparent;
     cursor: pointer;
+}
+
+.emptymsg {
+    font-family: Poppins, Arial, Helvetica, sans-serif;
+    color: red;
+    text-align: center;
+}
+
+.route {
+    color: #20c997;
+    text-decoration: none;
 }

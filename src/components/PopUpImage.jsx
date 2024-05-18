@@ -11,16 +11,8 @@ function PopUpImage({
     addFavorite,
 }) {
     const [image, setImage] = useState({});
+    const [isFavorite, setIsFavorite] = useState(false);
     const { tags: title, largeImageURL, pageURL, id } = image;
-
-    function handleAdd() {
-        const newImage = {
-            id,
-            title,
-            largeImageURL,
-        };
-        addFavorite(newImage);
-    }
 
     useEffect(() => {
         async function getImageDetails() {
@@ -31,6 +23,13 @@ function PopUpImage({
                 );
                 const data = await res.json();
                 setImage(data.hits[0]);
+
+                // Check if the image is already a favorite
+                const savedFavorites =
+                    JSON.parse(localStorage.getItem("favorites")) || [];
+                setIsFavorite(
+                    savedFavorites.some((fav) => fav.id === data.hits[0].id)
+                );
             } catch (error) {
                 console.error(error);
             } finally {
@@ -42,6 +41,21 @@ function PopUpImage({
             getImageDetails();
         }
     }, [selectedId, setIsLoading]);
+
+    function handleAdd() {
+        const newImage = {
+            id,
+            title,
+            largeImageURL,
+        };
+
+        const savedFavorites =
+            JSON.parse(localStorage.getItem("favorites")) || [];
+        if (!savedFavorites.some((fav) => fav.id === newImage.id)) {
+            addFavorite(newImage);
+            setIsFavorite(true); // Set favorite state to true
+        }
+    }
 
     useEffect(() => {
         if (title) {
@@ -66,37 +80,43 @@ function PopUpImage({
                     {isLoading ? (
                         <Loader />
                     ) : (
-                        <img
-                            className={styles.img}
-                            src={largeImageURL}
-                            alt={title}
-                        />
+                        <>
+                            <img
+                                className={styles.img}
+                                src={largeImageURL}
+                                alt={title}
+                            />
+
+                            <p className={styles.stars}>
+                                <Star
+                                    handleAdd={handleAdd}
+                                    isFavorite={isFavorite}
+                                />
+                            </p>
+                            <div className={styles.external}>
+                                <a
+                                    className={styles.link}
+                                    href={pageURL}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Original Source
+                                </a>
+                            </div>
+                        </>
                     )}
-                    <p className={styles.stars}>
-                        <Star handleAdd={handleAdd} />
-                    </p>
-                    <div className={styles.external}>
-                        <a
-                            className={styles.link}
-                            href={pageURL}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            Original Source
-                        </a>
-                    </div>
                 </div>
             </div>
         </>
     );
 }
 
-function Star({ handleAdd }) {
+function Star({ handleAdd, isFavorite }) {
     return (
         <span className={styles.star} onClick={handleAdd}>
             <svg
                 xmlns="http://www.w3.org/2000/svg"
-                fill="none"
+                fill={isFavorite ? "yellow" : "none"}
                 viewBox="0 0 24 24"
                 stroke="yellow"
                 height="40"

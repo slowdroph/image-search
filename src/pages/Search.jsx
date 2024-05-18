@@ -89,10 +89,11 @@ function Search({ setFavorite, favorites }) {
     }
 
     function addFavorite(img) {
-        setFavorite((favorite) => [...favorite, img]);
         const updatedFavorites = [...favorites, img];
+        setFavorite(updatedFavorites);
         localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
     }
+
     return (
         <>
             <PageNav />

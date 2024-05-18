@@ -1,4 +1,58 @@
+.pagebody {
+    overflow: hidden;
+}
+
 .box {
-    width: 100%;
-    height: fit-content;
+    width: fit-content;
+    margin: 0 auto;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.gear:nth-child(1) {
+    position: absolute;
+    right: 0px;
+    top: 30%;
+    animation-name: SpinGear;
+    animation-duration: 3s;
+    animation-direction: reverse;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+.gear:nth-child(2) {
+    position: absolute;
+    top: 22%;
+    animation-name: SpinGear;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+.gear:nth-child(3) {
+    position: absolute;
+    left: 0px;
+    top: 30%;
+    animation-name: SpinGear;
+    animation-duration: 3s;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.msg {
+    font-family: Poppins, Arial, Helvetica, sans-serif;
+    color: #20c997;
+    font-size: 2.2em;
+}
+
+@keyframes SpinGear {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
