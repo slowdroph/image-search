@@ -56,3 +56,38 @@
         transform: rotate(360deg);
     }
 }
+
+@media screen and (max-width: 830px) {
+    .msg {
+        font-size: 1.8em;
+        text-align: center;
+        padding: 0px 10px;
+        text-wrap: pretty;
+    }
+    
+    .gear {
+        padding: 0px 20px;
+    }
+
+    .gear svg {
+        width: 80px;
+    }
+
+    .gear:nth-child(1){
+        right: 40px;
+    }
+
+    .gear:nth-child(3){
+        left: 40px;
+    }
+}
+
+@media screen and (max-width:400px) {
+    .msg{
+        font-size: 1.5em;
+    }
+
+    .gear svg {
+        width: 60px;
+    }
+}

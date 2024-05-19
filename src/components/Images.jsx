@@ -7,7 +7,6 @@ function Images({ image, onSelectImage, isLoading }) {
         <ul className={styles.list}>
             {isLoading ? (
                 <Loader />
-                // ? Array.from({ length: 20 }, (_, i) => <Loader key={i} />)
             ) : (
                 image.map(function (e) {
                     return (

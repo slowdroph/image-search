@@ -114,3 +114,19 @@
     color: #20c997;
     text-decoration: none;
 }
+
+@media screen and (max-width: 450px) {
+    .list_item {
+        max-width: 340px;
+    }
+}
+
+@media screen and (max-width: 390px) {
+    .list_item {
+        max-width: 300px;
+    }
+
+    .star {
+        display: none;
+    }
+}

@@ -24,7 +24,6 @@ function PopUpImage({
                 const data = await res.json();
                 setImage(data.hits[0]);
 
-                // Check if the image is already a favorite
                 const savedFavorites =
                     JSON.parse(localStorage.getItem("favorites")) || [];
                 setIsFavorite(
@@ -53,7 +52,7 @@ function PopUpImage({
             JSON.parse(localStorage.getItem("favorites")) || [];
         if (!savedFavorites.some((fav) => fav.id === newImage.id)) {
             addFavorite(newImage);
-            setIsFavorite(true); // Set favorite state to true
+            setIsFavorite(true);
         }
     }
 

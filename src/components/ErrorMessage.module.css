@@ -4,3 +4,9 @@
     color: red;
     font-family: "Arial Narrow Bold", sans-serif;
 }
+
+@media screen and (max-width: 500px) {
+    .error {
+        font-size: 24px;
+    }
+}

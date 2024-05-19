@@ -28,3 +28,11 @@
     color: cyan;
 }
 
+@media screen and (max-width:400px) {
+    .nav_list ul {
+        gap: 3rem;
+    }
+    .nav_list li a {
+        font-size: 17px;
+    }
+}

@@ -92,7 +92,7 @@
 @media screen and (max-width: 500px) {
     .link {
         padding: 15px;
-        width: 230px;
+        width: 180px;
         font-size: 16px;
     }
 }
@@ -101,6 +101,12 @@
     position: absolute;
     right: 30px;
     bottom: 5rem;
+}
+
+@media screen and (max-width: 420px) {
+    .star {
+        right: 15px;
+    }
 }
 
 .star svg:hover {
