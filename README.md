@@ -1,8 +1,23 @@
-# React + Vite
+<h2 align="left">🔍 Image Search</h2>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+###
 
-Currently, two official plugins are available:
+<p align="left">Este é o Image Search, uma aplicação web que permite aos usuários buscar imagens de alta qualidade por meio de uma interface simples e intuitiva.</p>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+###
+
+<h2 align="left">🚀 Funcionalidades</h2>
+
+###
+
+<p align="left">🔎 Busca por imagens: Digite qualquer termo e receba imagens relacionadas ao tema.<br><br>⭐Adicione as melhores imagens aos favoritos.</p>
+
+###
+
+<h2 align="left">🛠️ Tecnologias Utilizadas</h2>
+
+###
+
+<p align="left">React.js - Construção da interface de usuário.<br><br>CSS3 - Estilização da interface.<br><br>PixaBay API - Fonte das imagens exibidas na aplicação.<br><br>Netlify - Hospedagem e deploy contínuo da aplicação.</p>
+
+###
